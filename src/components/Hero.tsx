@@ -55,7 +55,7 @@ const Hero = () => {
           <div className="lg:w-1/2 flex justify-center mt-8 lg:mt-0">
             {/* Card deck container with 3D perspective */}
             <div 
-              className="relative w-full max-w-md perspective-1000"
+              className="relative w-full max-w-md h-96 perspective-1000 card-deck-hover"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
@@ -63,83 +63,83 @@ const Hero = () => {
               
               {/* Card 4 (background) */}
               <div 
-                className={`absolute z-10 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform ${
-                  isHovering ? 'rotate-3 translate-x-6 -translate-y-1 opacity-65 scale-85 transition-all duration-500' : 'rotate-6 translate-x-4 -translate-y-2 opacity-70 scale-90 transition-all duration-300'
+                className={`absolute card-in-deck z-10 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 w-full max-w-sm h-64 mx-auto transform ${
+                  isHovering ? 'rotate-6 translate-x-8 -translate-y-2 opacity-60 transition-all duration-500' : 'rotate-12 translate-x-6 -translate-y-4 opacity-60 transition-all duration-300'
                 }`}
               >
-                <div className="flex items-center mb-3 md:mb-4">
-                  <div className="w-2 h-2 md:w-3 md:h-3 bg-gray-400 rounded-full mr-2 md:mr-3"></div>
-                  <h3 className="font-semibold text-base md:text-lg text-gray-400">Topic</h3>
+                <div className="flex items-center mb-4">
+                  <div className="w-3 h-3 bg-gray-400 rounded-full mr-3"></div>
+                  <h3 className="font-semibold text-lg text-gray-400">Topic</h3>
                 </div>
-                <p className="text-sm md:text-base text-gray-400 mb-4 opacity-50">Card in background</p>
+                <p className="text-base text-gray-400 mb-4 opacity-50 line-clamp-2">Card in background</p>
               </div>
               
               {/* Card 3 (background) */}
               <div 
-                className={`absolute z-20 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform ${
-                  isHovering ? 'rotate-1 -translate-x-2 translate-y-2 opacity-90 scale-97 transition-all duration-500' : '-rotate-4 -translate-x-3 translate-y-1 opacity-85 scale-95 transition-all duration-300'
+                className={`absolute card-in-deck z-20 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 w-full max-w-sm h-64 mx-auto transform ${
+                  isHovering ? '-rotate-4 -translate-x-4 translate-y-1 opacity-80 transition-all duration-500' : '-rotate-8 -translate-x-5 translate-y-2 opacity-80 transition-all duration-300'
                 }`}
               >
-                <div className="flex items-center mb-3 md:mb-4">
-                  <div className="w-2 h-2 md:w-3 md:h-3 bg-blue-500 rounded-full mr-2 md:mr-3"></div>
-                  <h3 className="font-semibold text-base md:text-lg dark:text-white">Research Analysis</h3>
+                <div className="flex items-center mb-4">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full mr-3"></div>
+                  <h3 className="font-semibold text-lg dark:text-white">Research Analysis</h3>
                 </div>
-                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4">Revenue Distribution in Nigerian States</p>
+                <p className="text-base text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">Revenue Distribution in Nigerian States</p>
                 <div className="text-sm text-blue-500 font-medium hover:underline cursor-pointer">View analysis →</div>
               </div>
               
               {/* Card 2 (middle layer) */}
               <div 
-                className={`absolute z-30 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform ${
-                  isHovering ? '-rotate-1 translate-x-2 translate-y-0 transition-all duration-500' : 'rotate-2 translate-x-1 transition-all duration-300'
+                className={`absolute card-in-deck z-30 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 w-full max-w-sm h-64 mx-auto transform ${
+                  isHovering ? 'rotate-1 translate-x-1 translate-y-0 transition-all duration-500' : 'rotate-4 translate-x-2 transition-all duration-300'
                 }`}
               >
-                <div className="flex items-center mb-3 md:mb-4">
-                  <div className="w-2 h-2 md:w-3 md:h-3 bg-amber-500 rounded-full mr-2 md:mr-3"></div>
-                  <h3 className="font-semibold text-base md:text-lg dark:text-white">Hot Debate</h3>
+                <div className="flex items-center mb-4">
+                  <div className="w-3 h-3 bg-amber-500 rounded-full mr-3"></div>
+                  <h3 className="font-semibold text-lg dark:text-white">Hot Debate</h3>
                 </div>
-                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4">Agricultural Policy Reforms: Impact on Food Security</p>
+                <p className="text-base text-gray-600 dark:text-gray-300 mb-4">Agricultural Policy Reforms: Impact on Food Security</p>
                 <div className="text-sm text-amber-500 font-medium hover:underline cursor-pointer">Join debate →</div>
               </div>
               
               {/* Card 1 (top/front card - main trending topic) */}
               <div 
-                className={`relative z-40 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform ${
+                className={`relative card-in-deck z-40 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 w-full max-w-sm h-64 mx-auto transform ${
                   isHovering ? 'translate-y-1 translate-x-0 rotate-0 transition-all duration-500' : 'transition-all duration-300'
                 }`}
               >
-                <div className="flex items-center mb-3 md:mb-4">
-                  <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full mr-2 md:mr-3"></div>
-                  <h3 className="font-semibold text-base md:text-lg dark:text-white">Trending Topic</h3>
+                <div className="flex items-center mb-4">
+                  <div className="w-3 h-3 bg-green-500 rounded-full mr-3"></div>
+                  <h3 className="font-semibold text-lg dark:text-white">Trending Topic</h3>
                 </div>
-                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4">Nigeria's Central Bank Policy: Impact on Small Businesses</p>
+                <p className="text-base text-gray-600 dark:text-gray-300 mb-4">Nigeria's Central Bank Policy: Impact on Small Businesses</p>
                 <div className="text-sm text-nigeria-green font-medium hover:underline cursor-pointer">Join this discussion →</div>
               </div>
               
               {/* Additional floating topics */}
               <div 
-                className={`absolute top-1/4 -right-4 sm:-right-8 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs ${
+                className={`absolute card-in-deck top-1/4 -right-8 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-4 max-w-xs ${
                   isHovering ? 'animate-none translate-y-[-60%] translate-x-[-5px] transition-all duration-500' : 'animate-pulse-slow'
                 }`}
               >
-                <div className="flex items-center mb-1 md:mb-2">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full mr-1.5 md:mr-2"></div>
-                  <h3 className="font-semibold text-xs md:text-sm dark:text-white">Popular Discussion</h3>
+                <div className="flex items-center mb-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  <h3 className="font-semibold text-sm dark:text-white">Popular Discussion</h3>
                 </div>
-                <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">Naira Exchange Rate: Economic Implications</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">Naira Exchange Rate: Economic Implications</p>
               </div>
               
               <div 
-                className={`absolute bottom-1/4 -left-4 sm:-left-8 transform translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs ${
+                className={`absolute card-in-deck bottom-1/4 -left-8 transform translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-xl p-4 max-w-xs ${
                   isHovering ? 'animate-none translate-y-[60%] translate-x-[5px] transition-all duration-500' : 'animate-pulse-slow'
                 }`} 
                 style={{ animationDelay: isHovering ? '0s' : '1.5s' }}
               >
-                <div className="flex items-center mb-1 md:mb-2">
-                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full mr-1.5 md:mr-2"></div>
-                  <h3 className="font-semibold text-xs md:text-sm dark:text-white">Live Now</h3>
+                <div className="flex items-center mb-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                  <h3 className="font-semibold text-sm dark:text-white">Live Now</h3>
                 </div>
-                <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">Infrastructure Development in Lagos State</p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">Infrastructure Development in Lagos State</p>
               </div>
             </div>
           </div>
