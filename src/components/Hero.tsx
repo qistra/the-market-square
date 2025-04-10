@@ -4,7 +4,7 @@ import { ArrowRight, BarChart2, MessageSquare, Users } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="pt-20 md:pt-24 lg:pt-32 pb-12 md:pb-16 lg:pb-24 nigeria-pattern-bg">
+    <section className="pt-20 md:pt-24 lg:pt-32 pb-12 md:pb-16 lg:pb-24 nigeria-pattern-bg dark:bg-gray-900 dark:bg-opacity-95">
       <div className="container px-4 mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
           <div className="lg:w-1/2 space-y-5 md:space-y-6">
@@ -15,11 +15,11 @@ const Hero = () => {
               </p>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance dark:text-white">
               Where Nigerian Economic & Political Discourse <span className="text-nigeria-green">Evolves</span>
             </h1>
             
-            <p className="text-base md:text-lg text-gray-600 md:pr-12 text-balance">
+            <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 md:pr-12 text-balance">
               A centralized platform for informed debate, resource sharing, and data-driven conversations about Nigerian politics and economics.
             </p>
             
@@ -28,7 +28,7 @@ const Hero = () => {
                 <span>Join The Conversation</span>
                 <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white py-5 md:py-6 px-6 md:px-8">
+              <Button size="lg" variant="outline" className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white py-5 md:py-6 px-6 md:px-8 dark:text-nigeria-green dark:border-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white">
                 Explore Features
               </Button>
             </div>
@@ -36,15 +36,15 @@ const Hero = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 pt-6 md:pt-8">
               <div className="flex gap-2 items-center">
                 <Users className="text-nigeria-green h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-gray-600 text-sm md:text-base">10K+ Active Members</span>
+                <span className="text-gray-600 dark:text-gray-300 text-sm md:text-base">10K+ Active Members</span>
               </div>
               <div className="flex gap-2 items-center">
                 <MessageSquare className="text-nigeria-green h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-gray-600 text-sm md:text-base">5K+ Daily Discussions</span>
+                <span className="text-gray-600 dark:text-gray-300 text-sm md:text-base">5K+ Daily Discussions</span>
               </div>
               <div className="flex gap-2 items-center">
                 <BarChart2 className="text-nigeria-green h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                <span className="text-gray-600 text-sm md:text-base">Real-time Data</span>
+                <span className="text-gray-600 dark:text-gray-300 text-sm md:text-base">Real-time Data</span>
               </div>
             </div>
           </div>
@@ -53,17 +53,17 @@ const Hero = () => {
             <div className="relative w-full max-w-md">
               <div className="absolute -top-4 -left-4 w-48 h-48 md:w-64 md:h-64 bg-nigeria-green opacity-5 rounded-full"></div>
               <img 
-                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&q=75&fit=crop&w=750" 
-                alt="Nigerian business professionals in discussion" 
-                className="relative z-10 rounded-lg shadow-xl w-full h-auto" 
+                src="/lovable-uploads/8a988b41-82e2-4468-b325-ca89b0344ab9.png" 
+                alt="Person using a mobile phone" 
+                className="relative z-10 rounded-lg w-full h-auto dark:opacity-90" 
                 loading="lazy"
               />
-              <div className="absolute top-1/2 -right-4 sm:-right-8 transform -translate-y-1/2 bg-white rounded-lg shadow-lg p-3 md:p-4 max-w-xs animate-pulse-slow">
+              <div className="absolute top-1/2 -right-4 sm:-right-8 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs animate-pulse-slow">
                 <div className="flex items-center mb-1 md:mb-2">
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full mr-1.5 md:mr-2"></div>
-                  <h3 className="font-semibold text-xs md:text-sm">Trending Topic</h3>
+                  <h3 className="font-semibold text-xs md:text-sm dark:text-white">Trending Topic</h3>
                 </div>
-                <p className="text-xs md:text-sm text-gray-600">Nigeria's Central Bank Policy: Impact on Small Businesses</p>
+                <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">Nigeria's Central Bank Policy: Impact on Small Businesses</p>
               </div>
             </div>
           </div>

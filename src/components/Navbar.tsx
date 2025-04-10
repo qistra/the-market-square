@@ -1,13 +1,18 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, LogIn } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { AuthModal } from "@/components/AuthModal";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isPwaInstallable, setIsPwaInstallable] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { user, signOut, loading } = useAuth();
 
   // Toggle menu state
   const toggleMenu = () => {
@@ -68,7 +73,7 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`bg-white bg-opacity-95 backdrop-blur-sm fixed w-full z-50 transition-shadow duration-300 ${
+      className={`bg-white dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 backdrop-blur-sm fixed w-full z-50 transition-shadow duration-300 ${
         isScrolled ? 'shadow-md' : 'shadow-sm'
       }`}
     >
@@ -80,24 +85,26 @@ const Navbar = () => {
                 <span className="text-white font-bold text-lg">M</span>
               </div>
               <span className="font-bold text-xl text-nigeria-green">
-                The Market <span className="text-gray-800 hidden xs:inline">Place Hub</span>
+                The Market <span className="text-gray-800 dark:text-white hidden xs:inline">Square</span>
               </span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-            <a href="#" className="text-gray-700 hover:text-nigeria-green transition duration-300">Home</a>
-            <a href="#features" className="text-gray-700 hover:text-nigeria-green transition duration-300">Features</a>
-            <a href="#how-it-works" className="text-gray-700 hover:text-nigeria-green transition duration-300">How It Works</a>
-            <a href="#community" className="text-gray-700 hover:text-nigeria-green transition duration-300">Community</a>
+            <a href="#" className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green dark:hover:text-nigeria-green transition duration-300">Home</a>
+            <a href="#features" className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green dark:hover:text-nigeria-green transition duration-300">Features</a>
+            <a href="#how-it-works" className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green dark:hover:text-nigeria-green transition duration-300">How It Works</a>
+            <a href="#community" className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green dark:hover:text-nigeria-green transition duration-300">Community</a>
           </div>
 
           <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
+            <ThemeToggle />
+            
             {isPwaInstallable && (
               <Button 
                 variant="outline" 
-                className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white"
+                className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white"
                 onClick={handleInstallClick}
                 id="install-button"
               >
@@ -106,21 +113,39 @@ const Navbar = () => {
               </Button>
             )}
             
-            <Button variant="outline" className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white">
-              Sign In
-            </Button>
-            <Button className="bg-nigeria-green hover:bg-nigeria-green-dark text-white">
-              Register
-            </Button>
+            {!loading && (
+              user ? (
+                <Button 
+                  variant="outline" 
+                  className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white"
+                  onClick={() => signOut()}
+                >
+                  Sign Out
+                </Button>
+              ) : (
+                <>
+                  <Button 
+                    variant="outline" 
+                    className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white"
+                    onClick={() => setIsAuthModalOpen(true)}
+                  >
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Sign In
+                  </Button>
+                </>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-3">
+            <ThemeToggle />
+            
             {isPwaInstallable && (
               <Button 
                 variant="outline" 
                 size="sm"
-                className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white p-2"
+                className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white p-2"
                 onClick={handleInstallClick}
                 id="mobile-install-button"
               >
@@ -130,7 +155,7 @@ const Navbar = () => {
             
             <button 
               onClick={toggleMenu}
-              className="text-gray-700 hover:text-nigeria-green focus:outline-none"
+              className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green focus:outline-none"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -144,44 +169,68 @@ const Navbar = () => {
             <div className="flex flex-col space-y-3">
               <a 
                 href="#" 
-                className="text-gray-700 hover:text-nigeria-green py-2 transition duration-300"
+                className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green dark:hover:text-nigeria-green py-2 transition duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </a>
               <a 
                 href="#features" 
-                className="text-gray-700 hover:text-nigeria-green py-2 transition duration-300"
+                className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green dark:hover:text-nigeria-green py-2 transition duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Features
               </a>
               <a 
                 href="#how-it-works" 
-                className="text-gray-700 hover:text-nigeria-green py-2 transition duration-300"
+                className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green dark:hover:text-nigeria-green py-2 transition duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 How It Works
               </a>
               <a 
                 href="#community" 
-                className="text-gray-700 hover:text-nigeria-green py-2 transition duration-300"
+                className="text-gray-700 dark:text-gray-200 hover:text-nigeria-green dark:hover:text-nigeria-green py-2 transition duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Community
               </a>
-              <div className="flex flex-col space-y-3 pt-2">
-                <Button variant="outline" className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white w-full">
-                  Sign In
-                </Button>
-                <Button className="bg-nigeria-green hover:bg-nigeria-green-dark text-white w-full">
-                  Register
-                </Button>
-              </div>
+              {!loading && (
+                user ? (
+                  <Button 
+                    variant="outline" 
+                    className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full"
+                    onClick={() => {
+                      signOut();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Sign Out
+                  </Button>
+                ) : (
+                  <Button 
+                    variant="outline" 
+                    className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full"
+                    onClick={() => {
+                      setIsAuthModalOpen(true);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Sign In
+                  </Button>
+                )
+              )}
             </div>
           </div>
         )}
       </div>
+      
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+      />
     </nav>
   );
 };
