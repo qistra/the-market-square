@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { supabase } from '@/lib/supabase'
+import { signInWithEmail, signUpWithEmail, signInWithOAuth, signInWithPhone } from '@/lib/supabase'
 import { useToast } from "@/components/ui/use-toast"
 import { Mail, Phone, LucideTwitter } from 'lucide-react'
 
@@ -26,10 +26,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoading(true)
     
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
+      const { error } = await signInWithEmail(email, password)
       
       if (error) throw error
       
@@ -54,10 +51,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoading(true)
     
     try {
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-      })
+      const { error } = await signUpWithEmail(email, password)
       
       if (error) throw error
       
@@ -82,9 +76,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
     setLoading(true)
     
     try {
-      const { error } = await supabase.auth.signInWithOtp({
-        phone,
-      })
+      const { error } = await signInWithPhone(phone)
       
       if (error) throw error
       
@@ -105,9 +97,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
   const handleGoogleSignIn = async () => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-      })
+      const { error } = await signInWithOAuth('google')
       
       if (error) throw error
     } catch (error: any) {
@@ -121,9 +111,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
   const handleTwitterSignIn = async () => {
     try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'twitter',
-      })
+      const { error } = await signInWithOAuth('twitter')
       
       if (error) throw error
     } catch (error: any) {

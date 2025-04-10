@@ -87,65 +87,11 @@ const Features = () => {
           </div>
           
           <div className="md:col-span-2 lg:col-span-1 rounded-xl overflow-hidden shadow-sm">
-            <div className="bg-gray-900 p-3 flex gap-2 items-center">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              </div>
-              <div className="text-gray-200 text-sm">Nigeria Economic Dashboard</div>
-            </div>
-            <div className="bg-gray-800 p-4 grid grid-cols-2 gap-4 h-full">
-              <div className="bg-gray-700 p-4 rounded-lg">
-                <div className="text-gray-400 text-sm mb-1">Inflation Rate</div>
-                <div className="text-red-500 text-2xl font-bold">22.41%</div>
-                <div className="text-gray-400 text-xs flex items-center mt-1">
-                  <svg className="h-3 w-3 text-green-400 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                  </svg>
-                  0.26% from last month
-                </div>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg">
-                <div className="text-gray-400 text-sm mb-1">NGN/USD</div>
-                <div className="text-gray-200 text-2xl font-bold">₦770.38</div>
-                <div className="text-gray-400 text-xs flex items-center mt-1">
-                  <svg className="h-3 w-3 text-red-400 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                  </svg>
-                  0.8% from yesterday
-                </div>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg">
-                <div className="text-gray-400 text-sm mb-1">GDP Growth</div>
-                <div className="text-green-500 text-2xl font-bold">2.51%</div>
-                <div className="text-gray-400 text-xs mt-1">Q2 2023 estimate</div>
-              </div>
-              <div className="bg-gray-700 p-4 rounded-lg">
-                <div className="text-gray-400 text-sm mb-1">Unemployment</div>
-                <div className="text-red-500 text-2xl font-bold">33.3%</div>
-                <div className="text-gray-400 text-xs mt-1">Q4 2022 data</div>
-              </div>
-              <div className="col-span-2 bg-gray-700 p-4 rounded-lg">
-                <div className="text-gray-300 text-sm font-medium mb-2">Key Political Events</div>
-                <div className="space-y-2">
-                  <div className="flex gap-3">
-                    <div className="text-xs text-gray-400 bg-gray-600 rounded px-2 py-1 h-fit">
-                      <div>Jul</div>
-                      <div>12</div>
-                    </div>
-                    <div className="text-gray-200">Supreme Court ruling on state autonomy</div>
-                  </div>
-                  <div className="flex gap-3">
-                    <div className="text-xs text-gray-400 bg-gray-600 rounded px-2 py-1 h-fit">
-                      <div>Jul</div>
-                      <div>18</div>
-                    </div>
-                    <div className="text-gray-200">National Assembly budget defense sessions</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img 
+              src="/lovable-uploads/7d9307ec-33b2-4413-9b0b-b652225403ee.png" 
+              alt="Nigeria Economic Dashboard" 
+              className="w-full h-auto"
+            />
           </div>
         </div>
         

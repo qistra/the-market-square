@@ -53,9 +53,9 @@ const Hero = () => {
             <div className="relative w-full max-w-md">
               <div className="absolute -top-4 -left-4 w-48 h-48 md:w-64 md:h-64 bg-nigeria-green opacity-5 rounded-full"></div>
               <img 
-                src="/lovable-uploads/8a988b41-82e2-4468-b325-ca89b0344ab9.png" 
-                alt="Person using a mobile phone" 
-                className="relative z-10 rounded-lg w-full h-auto dark:opacity-90" 
+                src="/lovable-uploads/b2205a8c-1187-423b-b40f-733753f3570d.png" 
+                alt="Person using a mobile phone - line art" 
+                className="relative z-10 w-full h-auto dark:invert" 
                 loading="lazy"
               />
               <div className="absolute top-1/2 -right-4 sm:-right-8 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs animate-pulse-slow">
