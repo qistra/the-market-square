@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { signInWithEmail, signUpWithEmail, signInWithOAuth, signInWithPhone } from '@/lib/supabase'
+import { signInWithEmail, signUpWithEmail, signInWithOAuth, signInWithPhone, supabase } from '@/lib/supabase'
 import { useToast } from "@/components/ui/use-toast"
 import { Mail, Phone, LucideTwitter } from 'lucide-react'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
