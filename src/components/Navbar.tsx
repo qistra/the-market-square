@@ -27,19 +27,6 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Close menu when clicking outside on mobile
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (isMenuOpen && !target.closest('nav')) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, [isMenuOpen]);
-
   // Detect scroll position for navbar styling
   useEffect(() => {
     const handleScroll = () => {
@@ -84,6 +71,11 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  const handleOpenAuthModal = () => {
+    setIsAuthModalOpen(true);
+    setIsMenuOpen(false);
+  };
+
   const renderAuthButtons = () => {
     if (loading) {
       return <Button variant="outline" disabled>Loading...</Button>;
@@ -115,7 +107,7 @@ const Navbar = () => {
       <Button 
         variant="outline" 
         className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white"
-        onClick={() => setIsAuthModalOpen(true)}
+        onClick={handleOpenAuthModal}
       >
         <LogIn className="mr-2 h-4 w-4" />
         Sign In
@@ -227,32 +219,31 @@ const Navbar = () => {
                 Community
               </a>
               
-              {loading ? (
-                <Button variant="outline" disabled>Loading...</Button>
-              ) : user ? (
-                <>
-                  <div className="py-2 text-sm text-gray-500">Signed in as: {user.email}</div>
+              <div className="py-2 border-t border-gray-200 dark:border-gray-700 mt-2">
+                {loading ? (
+                  <Button variant="outline" disabled className="w-full mt-2">Loading...</Button>
+                ) : user ? (
+                  <>
+                    <div className="py-2 text-sm text-gray-500 dark:text-gray-400">Signed in as: {user.email}</div>
+                    <Button 
+                      variant="outline" 
+                      className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full mt-2"
+                      onClick={handleSignOut}
+                    >
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
                   <Button 
                     variant="outline" 
-                    className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full"
-                    onClick={handleSignOut}
+                    className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full mt-2"
+                    onClick={handleOpenAuthModal}
                   >
-                    Sign Out
+                    <LogIn className="mr-2 h-4 w-4" />
+                    Sign In
                   </Button>
-                </>
-              ) : (
-                <Button 
-                  variant="outline" 
-                  className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full"
-                  onClick={() => {
-                    setIsAuthModalOpen(true);
-                    setIsMenuOpen(false);
-                  }}
-                >
-                  <LogIn className="mr-2 h-4 w-4" />
-                  Sign In
-                </Button>
-              )}
+                )}
+              </div>
             </div>
           </div>
         )}
