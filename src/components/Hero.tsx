@@ -52,18 +52,32 @@ const Hero = () => {
           <div className="lg:w-1/2 flex justify-center mt-8 lg:mt-0">
             <div className="relative w-full max-w-md">
               <div className="absolute -top-4 -left-4 w-48 h-48 md:w-64 md:h-64 bg-nigeria-green opacity-5 rounded-full"></div>
-              <img 
-                src="/lovable-uploads/13eeef2e-d76e-4419-b0de-ec159b33408b.png" 
-                alt="Silhouettes of people against a map of Africa with data visualization elements" 
-                className="relative z-10 w-full h-auto rounded-lg shadow-lg dark:border dark:border-gray-700" 
-                loading="lazy"
-              />
-              <div className="absolute top-1/2 -right-4 sm:-right-8 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs animate-pulse-slow">
+              
+              {/* Trending Topic card - now the main element in place of the image */}
+              <div className="relative z-10 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full">
+                <div className="flex items-center mb-3 md:mb-4">
+                  <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full mr-2 md:mr-3"></div>
+                  <h3 className="font-semibold text-base md:text-lg dark:text-white">Trending Topic</h3>
+                </div>
+                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4">Nigeria's Central Bank Policy: Impact on Small Businesses</p>
+                <div className="text-sm text-nigeria-green font-medium hover:underline cursor-pointer">Join this discussion →</div>
+              </div>
+              
+              {/* Additional trending topics that slide in from sides (optional) */}
+              <div className="absolute top-1/4 -right-4 sm:-right-8 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs animate-pulse-slow">
                 <div className="flex items-center mb-1 md:mb-2">
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full mr-1.5 md:mr-2"></div>
-                  <h3 className="font-semibold text-xs md:text-sm dark:text-white">Trending Topic</h3>
+                  <h3 className="font-semibold text-xs md:text-sm dark:text-white">Popular Discussion</h3>
                 </div>
-                <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">Nigeria's Central Bank Policy: Impact on Small Businesses</p>
+                <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">Naira Exchange Rate: Economic Implications</p>
+              </div>
+              
+              <div className="absolute bottom-1/4 -left-4 sm:-left-8 transform translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs animate-pulse-slow" style={{ animationDelay: '1.5s' }}>
+                <div className="flex items-center mb-1 md:mb-2">
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full mr-1.5 md:mr-2"></div>
+                  <h3 className="font-semibold text-xs md:text-sm dark:text-white">Live Now</h3>
+                </div>
+                <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">Infrastructure Development in Lagos State</p>
               </div>
             </div>
           </div>
