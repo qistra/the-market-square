@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { AuthModal } from "@/components/AuthModal";
 import { useAuth } from "@/hooks/useAuth";
+import { MessageSquare, BarChart, Users } from "lucide-react";
 
 const Hero = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -18,9 +19,9 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center bg-background py-12 overflow-hidden">
+    <section className="relative min-h-[calc(100vh-5rem)] flex items-center bg-gray-950 text-white py-12 overflow-hidden">
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-5 pointer-events-none">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
         <img
           src="/nigeria-pattern.png"
           alt=""
@@ -31,13 +32,18 @@ const Hero = () => {
       <div className="container mx-auto px-4 z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="flex-1 text-center md:text-left max-w-xl mx-auto md:mx-0">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-              The Digital{" "}
-              <span className="text-nigeria-green">Marketplace</span> for African Products
+            <p className="text-nigeria-green flex items-center justify-center md:justify-start gap-2 mb-4">
+              <span className="inline-block w-2 h-2 rounded-full bg-nigeria-green"></span>
+              Nigeria's Premier Discussion Forum
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Where Nigerian<br/>
+              Economic & Political<br/>
+              Discourse <span className="text-nigeria-green">Evolves</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg mx-auto md:mx-0">
-              Connect with verified sellers, find authentic African products, and 
-              engage with a community of buyers and sellers across the continent.
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg mx-auto md:mx-0">
+              A centralized platform for informed debate, resource sharing, and
+              data-driven conversations about Nigerian politics and economics.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Button 
@@ -45,25 +51,39 @@ const Hero = () => {
                 className="bg-nigeria-green hover:bg-nigeria-green/90 text-white px-8"
                 onClick={handleCTAClick}
               >
-                Start Exploring
+                Join The Conversation
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white"
+                className="border-gray-600 text-white hover:bg-gray-800"
                 onClick={handleCTAClick}
               >
-                Become a Seller
+                Explore Features
               </Button>
             </div>
+            
+            <div className="flex flex-wrap justify-center md:justify-start gap-8 mt-12">
+              <div className="flex items-center gap-2">
+                <Users className="text-nigeria-green h-5 w-5" />
+                <span className="text-gray-300">10K+ Active Members</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <MessageSquare className="text-nigeria-green h-5 w-5" />
+                <span className="text-gray-300">5K+ Daily Discussions</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <BarChart className="text-nigeria-green h-5 w-5" />
+                <span className="text-gray-300">Real-time Data</span>
+              </div>
+            </div>
           </div>
-          <div className="flex-1 w-full max-w-md">
-            <div className="relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-nigeria-green to-yellow-500 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
-              <div className="relative bg-background rounded-lg overflow-hidden border border-nigeria-green/20">
+          <div className="flex-1 w-full max-w-lg">
+            <div className="relative perspective-1000">
+              <div className="relative bg-gray-900 rounded-lg overflow-hidden border border-gray-800 transform rotate-y-minus-5 rotate-z-minus-2 shadow-xl">
                 <img
-                  src="/lovable-uploads/13eeef2e-d76e-4419-b0de-ec159b33408b.png"
-                  alt="The Market Square sample products"
+                  src="/lovable-uploads/cc7d716c-f8e0-4c21-b579-531c9823c080.png"
+                  alt="The Market Square discussion forum"
                   className="w-full h-auto rounded-lg"
                 />
               </div>
