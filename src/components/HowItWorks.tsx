@@ -1,118 +1,121 @@
 
-import { Check, User, FileText, MessageSquare } from "lucide-react";
-
-const StepCard = ({ number, title, description, icon: Icon }: { number: number; title: string; description: string; icon: any }) => {
-  return (
-    <div className="relative">
-      <div className="flex items-center mb-4">
-        <div className="bg-nigeria-green text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg z-10">
-          {number}
-        </div>
-        {number < 3 && (
-          <div className="h-0.5 bg-nigeria-green bg-opacity-20 w-full ml-4 hidden md:block"></div>
-        )}
-      </div>
-      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 card-hover">
-        <div className="bg-nigeria-green bg-opacity-10 w-12 h-12 rounded-full flex items-center justify-center mb-4">
-          <Icon className="h-6 w-6 text-nigeria-green" />
-        </div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
-      </div>
-    </div>
-  );
-};
+import { useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { AuthModal } from "@/components/AuthModal";
+import { useAuth } from "@/hooks/useAuth";
 
 const HowItWorks = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { user } = useAuth();
+
+  const handleCTAClick = () => {
+    if (!user) {
+      setIsAuthModalOpen(true);
+    } else {
+      // If user is logged in, proceed with intended action
+      window.location.href = "#community";
+    }
+  };
+
   return (
-    <section className="section-padding nigeria-pattern-bg" id="how-it-works">
+    <section id="how-it-works" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Join our community in three simple steps and start engaging in meaningful discussions about Nigeria's economic and political landscape.
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">How <span className="text-nigeria-green">The Market Square</span> Works</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Whether you're a buyer looking for authentic products or a seller wanting to reach new customers,
+            our platform makes the process simple and secure.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <StepCard 
-            number={1}
-            title="Create Your Profile"
-            description="Sign up and create your profile highlighting your areas of expertise and interests in Nigerian economics and politics."
-            icon={User}
-          />
-          
-          <StepCard 
-            number={2}
-            title="Explore Resources"
-            description="Access our comprehensive resource library for data, analysis, and context about Nigerian economic and political landscape."
-            icon={FileText}
-          />
-          
-          <StepCard 
-            number={3}
-            title="Join Discussions"
-            description="Participate in structured debates, contribute insights, and connect with experts and passionate community members."
-            icon={MessageSquare}
-          />
-        </div>
-        
-        <div className="mt-16 bg-white rounded-xl shadow-md p-8 border border-gray-100">
-          <div className="flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 mb-8 md:mb-0">
-              <h3 className="text-2xl font-bold mb-4">What Makes Us Different</h3>
-              <p className="text-gray-600 mb-6">
-                The Market Place Hub isn't just another forum. We've built specific features to elevate the quality of discussion about Nigerian economics and politics:
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <div className="bg-nigeria-green rounded-full p-1 mr-3 mt-1">
-                    <Check className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-medium">Evidence-Based Discussions</span>
-                    <p className="text-sm text-gray-600">All claims require supporting evidence, creating more productive conversations</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="bg-nigeria-green rounded-full p-1 mr-3 mt-1">
-                    <Check className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-medium">Expertise Verification</span>
-                    <p className="text-sm text-gray-600">Academic and professional credentials are verified for trusted expert opinions</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="bg-nigeria-green rounded-full p-1 mr-3 mt-1">
-                    <Check className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-medium">Real-Time Data Integration</span>
-                    <p className="text-sm text-gray-600">Economic indicators and political context displayed alongside discussions</p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="bg-nigeria-green rounded-full p-1 mr-3 mt-1">
-                    <Check className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-medium">Structured Debate Format</span>
-                    <p className="text-sm text-gray-600">Organized discussions with clear topics, time limits, and moderation</p>
-                  </div>
-                </li>
-              </ul>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="space-y-8">
+              {/* Step 1 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-nigeria-green text-white flex items-center justify-center font-bold text-lg">1</div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Create an Account</h3>
+                  <p className="text-muted-foreground">
+                    Sign up for free in seconds using your email, phone number, or social media accounts.
+                    Verify your identity to start buying or selling.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-nigeria-green text-white flex items-center justify-center font-bold text-lg">2</div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Browse or List Products</h3>
+                  <p className="text-muted-foreground">
+                    Explore thousands of products from across Africa or list your own products with detailed
+                    descriptions and high-quality images.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-nigeria-green text-white flex items-center justify-center font-bold text-lg">3</div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Secure Transactions</h3>
+                  <p className="text-muted-foreground">
+                    Use our secure payment system that protects both buyers and sellers. 
+                    Funds are only released when buyers confirm receipt of goods.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="flex gap-4">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-nigeria-green text-white flex items-center justify-center font-bold text-lg">4</div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Delivery & Feedback</h3>
+                  <p className="text-muted-foreground">
+                    Track your order in real-time until it arrives. Leave feedback and ratings to help
+                    build our community's trust system.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="md:w-1/2 md:pl-12 flex justify-center">
-              <img 
-                src="https://images.unsplash.com/photo-1494891848038-7bd202a2afeb?auto=format&q=75&fit=crop&w=600" 
-                alt="Nigerian architectural detail representing structured discussions" 
-                className="rounded-lg shadow-lg max-w-full h-auto" 
+
+            <div className="mt-8">
+              <Button 
+                className="bg-nigeria-green hover:bg-nigeria-green/90 text-white"
+                onClick={handleCTAClick}
+              >
+                Get Started Now
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-r from-nigeria-green to-yellow-500 rounded-xl blur opacity-20"></div>
+            <div className="relative bg-background rounded-xl overflow-hidden border border-nigeria-green/20">
+              <img
+                src="/lovable-uploads/7d9307ec-33b2-4413-9b0b-b652225403ee.png"
+                alt="The Market Square platform demonstration"
+                className="w-full h-auto"
               />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Auth Modal */}
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+      />
     </section>
   );
 };
