@@ -10,6 +10,13 @@ import Footer from "@/components/Footer";
 import { WifiOff } from "lucide-react";
 import { checkForUpdates, showInstallPrompt } from "@/registerServiceWorker";
 
+// Add CSS for perspective
+const perspectiveStyles = `
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+`;
+
 const Index = () => {
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
 
@@ -36,6 +43,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col dark:bg-gray-950">
+      <style dangerouslySetInnerHTML={{ __html: perspectiveStyles }} />
       <Navbar />
       <main className="flex-1">
         <Hero />
