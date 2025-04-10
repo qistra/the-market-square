@@ -1,0 +1,52 @@
+
+{
+  "name": "The Market Place Hub - Nigerian Economic & Political Discourse",
+  "short_name": "Market Place Hub",
+  "description": "A centralized platform for informed debate, resource sharing, and data-driven conversations about Nigerian politics and economics.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#008751",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Economic Data",
+      "short_name": "Economy",
+      "description": "View latest Nigerian economic indicators",
+      "url": "/#features",
+      "icons": [{ "src": "/icons/chart-icon.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Join Discussions",
+      "short_name": "Discuss",
+      "description": "Join ongoing debates about Nigerian politics and economy",
+      "url": "/#community",
+      "icons": [{ "src": "/icons/discuss-icon.png", "sizes": "96x96" }]
+    }
+  ]
+}

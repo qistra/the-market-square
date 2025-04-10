@@ -1,0 +1,8 @@
+
+This folder will contain the PWA icons. You'll need to add:
+- icon-192x192.png
+- icon-512x512.png
+- icon-192x192-maskable.png (with safe zone for maskable icons)
+- icon-512x512-maskable.png (with safe zone for maskable icons)
+- chart-icon.png (for shortcuts)
+- discuss-icon.png (for shortcuts)
