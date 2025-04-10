@@ -61,6 +61,10 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      scale: {
+        '85': '0.85',
+        '97': '0.97',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -83,12 +87,17 @@ export default {
           from: { transform: "translateY(-100%)" },
           to: { transform: "translateY(0)" },
         },
+        "pulse-slow": {
+          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+          '50%': { opacity: '0.8', transform: 'scale(0.98)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.3s ease-out",
         "slide-in-from-top": "slide-in-from-top 0.3s ease-out",
+        "pulse-slow": "pulse-slow 3s ease-in-out infinite",
       },
     },
   },

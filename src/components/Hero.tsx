@@ -1,8 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart2, MessageSquare, Users } from "lucide-react";
+import { useState } from "react";
 
 const Hero = () => {
+  const [isHovering, setIsHovering] = useState(false);
+
   return (
     <section className="pt-20 md:pt-24 lg:pt-32 pb-12 md:pb-16 lg:pb-24 nigeria-pattern-bg dark:bg-gray-900 dark:bg-opacity-95">
       <div className="container px-4 mx-auto">
@@ -51,11 +54,19 @@ const Hero = () => {
           
           <div className="lg:w-1/2 flex justify-center mt-8 lg:mt-0">
             {/* Card deck container with 3D perspective */}
-            <div className="relative w-full max-w-md perspective-1000">
+            <div 
+              className="relative w-full max-w-md perspective-1000"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
               <div className="absolute -top-4 -left-4 w-48 h-48 md:w-64 md:h-64 bg-nigeria-green opacity-5 rounded-full"></div>
               
               {/* Card 4 (background) */}
-              <div className="absolute z-10 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform rotate-6 translate-x-4 -translate-y-2 opacity-70 scale-90">
+              <div 
+                className={`absolute z-10 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform ${
+                  isHovering ? 'rotate-3 translate-x-6 -translate-y-1 opacity-65 scale-85 transition-all duration-500' : 'rotate-6 translate-x-4 -translate-y-2 opacity-70 scale-90 transition-all duration-300'
+                }`}
+              >
                 <div className="flex items-center mb-3 md:mb-4">
                   <div className="w-2 h-2 md:w-3 md:h-3 bg-gray-400 rounded-full mr-2 md:mr-3"></div>
                   <h3 className="font-semibold text-base md:text-lg text-gray-400">Topic</h3>
@@ -64,7 +75,11 @@ const Hero = () => {
               </div>
               
               {/* Card 3 (background) */}
-              <div className="absolute z-20 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform -rotate-4 -translate-x-3 translate-y-1 opacity-85 scale-95">
+              <div 
+                className={`absolute z-20 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform ${
+                  isHovering ? 'rotate-1 -translate-x-2 translate-y-2 opacity-90 scale-97 transition-all duration-500' : '-rotate-4 -translate-x-3 translate-y-1 opacity-85 scale-95 transition-all duration-300'
+                }`}
+              >
                 <div className="flex items-center mb-3 md:mb-4">
                   <div className="w-2 h-2 md:w-3 md:h-3 bg-blue-500 rounded-full mr-2 md:mr-3"></div>
                   <h3 className="font-semibold text-base md:text-lg dark:text-white">Research Analysis</h3>
@@ -74,7 +89,11 @@ const Hero = () => {
               </div>
               
               {/* Card 2 (middle layer) */}
-              <div className="absolute z-30 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform rotate-2 translate-x-1">
+              <div 
+                className={`absolute z-30 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform ${
+                  isHovering ? '-rotate-1 translate-x-2 translate-y-0 transition-all duration-500' : 'rotate-2 translate-x-1 transition-all duration-300'
+                }`}
+              >
                 <div className="flex items-center mb-3 md:mb-4">
                   <div className="w-2 h-2 md:w-3 md:h-3 bg-amber-500 rounded-full mr-2 md:mr-3"></div>
                   <h3 className="font-semibold text-base md:text-lg dark:text-white">Hot Debate</h3>
@@ -84,7 +103,11 @@ const Hero = () => {
               </div>
               
               {/* Card 1 (top/front card - main trending topic) */}
-              <div className="relative z-40 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto">
+              <div 
+                className={`relative z-40 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-5 md:p-6 w-full max-w-sm mx-auto transform ${
+                  isHovering ? 'translate-y-1 translate-x-0 rotate-0 transition-all duration-500' : 'transition-all duration-300'
+                }`}
+              >
                 <div className="flex items-center mb-3 md:mb-4">
                   <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full mr-2 md:mr-3"></div>
                   <h3 className="font-semibold text-base md:text-lg dark:text-white">Trending Topic</h3>
@@ -94,7 +117,11 @@ const Hero = () => {
               </div>
               
               {/* Additional floating topics */}
-              <div className="absolute top-1/4 -right-4 sm:-right-8 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs animate-pulse-slow">
+              <div 
+                className={`absolute top-1/4 -right-4 sm:-right-8 transform -translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs ${
+                  isHovering ? 'animate-none translate-y-[-60%] translate-x-[-5px] transition-all duration-500' : 'animate-pulse-slow'
+                }`}
+              >
                 <div className="flex items-center mb-1 md:mb-2">
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full mr-1.5 md:mr-2"></div>
                   <h3 className="font-semibold text-xs md:text-sm dark:text-white">Popular Discussion</h3>
@@ -102,7 +129,12 @@ const Hero = () => {
                 <p className="text-xs md:text-sm text-gray-600 dark:text-gray-300">Naira Exchange Rate: Economic Implications</p>
               </div>
               
-              <div className="absolute bottom-1/4 -left-4 sm:-left-8 transform translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs animate-pulse-slow" style={{ animationDelay: '1.5s' }}>
+              <div 
+                className={`absolute bottom-1/4 -left-4 sm:-left-8 transform translate-y-1/2 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-3 md:p-4 max-w-xs ${
+                  isHovering ? 'animate-none translate-y-[60%] translate-x-[5px] transition-all duration-500' : 'animate-pulse-slow'
+                }`} 
+                style={{ animationDelay: isHovering ? '0s' : '1.5s' }}
+              >
                 <div className="flex items-center mb-1 md:mb-2">
                   <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full mr-1.5 md:mr-2"></div>
                   <h3 className="font-semibold text-xs md:text-sm dark:text-white">Live Now</h3>
