@@ -1,10 +1,18 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Menu, X, Download, LogIn } from "lucide-react";
+import { Menu, X, Download, LogIn, UserCircle } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { AuthModal } from "@/components/AuthModal";
 import { useAuth } from "@/hooks/useAuth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,6 +79,50 @@ const Navbar = () => {
     setIsPwaInstallable(false);
   };
 
+  const handleSignOut = async () => {
+    await signOut();
+    setIsMenuOpen(false);
+  };
+
+  const renderAuthButtons = () => {
+    if (loading) {
+      return <Button variant="outline" disabled>Loading...</Button>;
+    }
+    
+    if (user) {
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="border-nigeria-green text-nigeria-green flex items-center gap-2">
+              <UserCircle size={18} />
+              {user.email ? user.email.split('@')[0] : 'Account'}
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Profile</DropdownMenuItem>
+            <DropdownMenuItem>Saved Items</DropdownMenuItem>
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem onClick={handleSignOut}>Sign Out</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    }
+    
+    return (
+      <Button 
+        variant="outline" 
+        className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white"
+        onClick={() => setIsAuthModalOpen(true)}
+      >
+        <LogIn className="mr-2 h-4 w-4" />
+        Sign In
+      </Button>
+    );
+  };
+
   return (
     <nav 
       className={`bg-white dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 backdrop-blur-sm fixed w-full z-50 transition-shadow duration-300 ${
@@ -113,28 +165,7 @@ const Navbar = () => {
               </Button>
             )}
             
-            {!loading && (
-              user ? (
-                <Button 
-                  variant="outline" 
-                  className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white"
-                  onClick={() => signOut()}
-                >
-                  Sign Out
-                </Button>
-              ) : (
-                <>
-                  <Button 
-                    variant="outline" 
-                    className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white"
-                    onClick={() => setIsAuthModalOpen(true)}
-                  >
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Sign In
-                  </Button>
-                </>
-              )
-            )}
+            {renderAuthButtons()}
           </div>
 
           {/* Mobile Menu Button */}
@@ -195,31 +226,32 @@ const Navbar = () => {
               >
                 Community
               </a>
-              {!loading && (
-                user ? (
+              
+              {loading ? (
+                <Button variant="outline" disabled>Loading...</Button>
+              ) : user ? (
+                <>
+                  <div className="py-2 text-sm text-gray-500">Signed in as: {user.email}</div>
                   <Button 
                     variant="outline" 
                     className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full"
-                    onClick={() => {
-                      signOut();
-                      setIsMenuOpen(false);
-                    }}
+                    onClick={handleSignOut}
                   >
                     Sign Out
                   </Button>
-                ) : (
-                  <Button 
-                    variant="outline" 
-                    className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full"
-                    onClick={() => {
-                      setIsAuthModalOpen(true);
-                      setIsMenuOpen(false);
-                    }}
-                  >
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Sign In
-                  </Button>
-                )
+                </>
+              ) : (
+                <Button 
+                  variant="outline" 
+                  className="border-nigeria-green text-nigeria-green hover:bg-nigeria-green hover:text-white dark:border-nigeria-green dark:text-nigeria-green dark:hover:bg-nigeria-green dark:hover:text-white w-full"
+                  onClick={() => {
+                    setIsAuthModalOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  <LogIn className="mr-2 h-4 w-4" />
+                  Sign In
+                </Button>
               )}
             </div>
           </div>
