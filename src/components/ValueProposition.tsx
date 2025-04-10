@@ -15,8 +15,8 @@ const ValueProposition = () => {
     },
     {
       icon: <Users2 className="h-8 w-8 md:h-10 md:w-10 text-nigeria-green" />,
-      title: "Community Expertise",
-      description: "Connect with subject matter experts and leverage collective knowledge across various domains"
+      title: "Community Interests",
+      description: "Connect with passionate individuals and leverage collective knowledge across various domains"
     },
     {
       icon: <FileText className="h-8 w-8 md:h-10 md:w-10 text-nigeria-green" />,
@@ -29,7 +29,7 @@ const ValueProposition = () => {
     <section className="section-padding bg-white" id="value-proposition">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Why Choose The Market Place Hub?</h2>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Why Choose The Market Square?</h2>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
             A unique platform designed specifically for Nigerian economic and political discourse, with features that promote productive, data-driven conversations.
           </p>
