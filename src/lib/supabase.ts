@@ -1,17 +1,6 @@
 
 import { createClient } from '@supabase/supabase-js'
 
-// Get the current window location to use for redirects
-const getBaseUrl = () => {
-  // In production, use the current window location
-  if (typeof window !== 'undefined') {
-    const url = new URL(window.location.href);
-    return `${url.protocol}//${url.host}`;
-  }
-  // Fallback for SSR or if window is not available
-  return 'https://f8c40855-f94e-40e2-8218-b9c2fe3155ea.lovableproject.com';
-};
-
 // Create a single supabase client for interacting with your database
 export const supabase = createClient(
   'https://tretsykvkjhscgbjukfv.supabase.co',
@@ -21,8 +10,6 @@ export const supabase = createClient(
       storage: localStorage,
       persistSession: true,
       autoRefreshToken: true,
-      // Set the redirect URL to the current domain
-      redirectTo: `${getBaseUrl()}/`,
     }
   }
 )
@@ -33,23 +20,11 @@ export const signInWithEmail = async (email: string, password: string) => {
 }
 
 export const signUpWithEmail = async (email: string, password: string) => {
-  return await supabase.auth.signUp({ 
-    email, 
-    password,
-    options: {
-      // Make sure to use the current domain for email confirmation
-      emailRedirectTo: `${getBaseUrl()}/`,
-    }
-  })
+  return await supabase.auth.signUp({ email, password })
 }
 
 export const signInWithOAuth = async (provider: 'google' | 'twitter') => {
-  return await supabase.auth.signInWithOAuth({ 
-    provider,
-    options: {
-      redirectTo: `${getBaseUrl()}/`,
-    }
-  })
+  return await supabase.auth.signInWithOAuth({ provider })
 }
 
 export const signInWithPhone = async (phone: string) => {
